@@ -1,0 +1,35 @@
+--lua
+log("clear") log("mode compact")
+local ptr = require("Modules/pointers")
+
+--log("[PT-BR] Use a skill de pesca e posicione o mouse onde vai clicar, espere 5 segundos. \n" ..
+--    "[EN] Use the fishing skill and move the mouse where you want to click, wait 5 seconds.")
+
+wait("5s")
+
+x = ptr.fishX()
+y = ptr.fishY()
+
+mx = ptr.mouseX()
+my = ptr.mouseY()
+
+log("Position =  "..x..", ".. y.." Cords = "..mx..", ".. my)
+
+--log("[PT-BR] Copie os valores e cole no script Fish, olhe para que lado a Vara esta, EX:  Posicao 1 = Cordenada 1.\n" ..
+--    "[EN] Copy the values and paste them into the Fish script, look at which way the Rod is, EX: Pos 1 = Cords 1. ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

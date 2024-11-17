@@ -1,0 +1,59 @@
+--lua
+log("clear")
+log("mode compact")
+local ptr = require("Modules/pointers")
+
+PickUpAll = {517, 309} -- Coordenadas do pick up all
+
+Rod = 7
+
+local Positions = {
+    {-30, 73}, -- Pos 1
+    {0, -80},   -- Pos 2
+    {30, -73},  -- Pos 3
+    {56, 56}   -- Pos 4
+}
+
+Cords = {
+    {460, 290}, -- Cords 1
+    {499, 303}, -- Cords 2
+    {435, 308}, -- Cords 3
+    {642, 321}  -- Cords 4
+}
+
+
+local function fish(x, y)
+    for i, posicao in ipairs(Positions) do
+        if x == posicao[1] and y == posicao[2] then
+            wait(100)
+
+            if ptr.isFishing() then
+                move(Cords[i][1], Cords[i][2])
+                while not ptr.fish() do wait(100) end
+
+                right(Cords[i][1], Cords[i][2])
+                wait(1000)
+                left(PickUpAll[1], PickUpAll[2])
+                wait(500)
+
+                return true
+            end
+        end
+    end
+    log("Fail!")
+    return false
+end
+
+
+while true do
+    wait(4000)
+    send(Rod, 1000)
+
+    x = ptr.fishX()
+    y = ptr.fishY()
+
+    wait(100)
+
+    fish(x, y)
+
+end
